@@ -1,0 +1,155 @@
+(dp0
+S'122700'
+p1
+(dp2
+S'faces'
+p3
+(lp4
+sS'meetingdetails'
+p5
+S'You recorded this interaction on 04/19/17. '
+p6
+sS'secondlevel'
+p7
+(lp8
+Vman in black crew neck shirt and blue jeans standing on hallway during sunset
+p9
+aVman in black shirt walking beside green plants during daytime
+p10
+aVStop Water Not for drinking signage
+p11
+assS'37711'
+p12
+(dp13
+g3
+(lp14
+sg5
+S'You recorded this interaction on 04/19/17. '
+p15
+sg7
+(lp16
+Vphoto of cars
+p17
+assS'218712'
+p18
+(dp19
+g3
+(lp20
+sg5
+S'You recorded this interaction on 04/19/17. '
+p21
+sg7
+(lp22
+Vassorted colored cars
+p23
+assS'292114'
+p24
+(dp25
+g3
+(lp26
+sg5
+S'You recorded this interaction on 04/19/17. '
+p27
+sg7
+(lp28
+Vwhite Honda City with license plate of GA 05 D 8202
+p29
+assS'82174'
+p30
+(dp31
+g3
+(lp32
+sg5
+S'You recorded this interaction on 04/19/17. '
+p33
+sg7
+(lp34
+Vblack and grey laptop computer top of white wooden table with 2 rolling chairs inside office
+p35
+aVblack corded headset
+p36
+aVblack corded telephone on white desk
+p37
+aVblack HP laptop beside novel book
+p38
+assS'140354'
+p39
+(dp40
+g3
+(lp41
+S'Manish Kelkar'
+p42
+aS'Yussuf Shaikh'
+p43
+aS'Ranjit Naik'
+p44
+aS'Rahul Prabhudesai'
+p45
+aS'Pranav Tendolkar'
+p46
+aS'Durgadas Kamath'
+p47
+asg5
+S'You recorded this interaction on 04/19/17. '
+p48
+sg7
+(lp49
+VPerson take a picture of white bulletin board
+p50
+aVgroup of people sitting on chair during daytime
+p51
+aVman in blue denim button up shirt wearing eyeglasses holding black wireless microphone
+p52
+aVtable near computer on desk beside table
+p53
+aVsilver and black HP laptop computer and LED speaker on top on table
+p54
+assS'126853'
+p55
+(dp56
+g3
+(lp57
+sg5
+S'You recorded this interaction on 04/19/17. '
+p58
+sg7
+(lp59
+Vwhite digital device
+p60
+assS'127597'
+p61
+(dp62
+g3
+(lp63
+S'Pranav Tendolkar'
+p64
+asg5
+S'You recorded this interaction on 04/19/17. '
+p65
+sg7
+(lp66
+Vcloseup photo of man with white wall paint background
+p67
+assS'204412'
+p68
+(dp69
+g3
+(lp70
+sg5
+S'You recorded this interaction on 04/19/17. '
+p71
+sg7
+(lp72
+Vman wearing black and  red polo shirt  and an ID
+p73
+aVman in green collared shirt taking self portrait
+p74
+aVfood court with crowded peoples at daytime
+p75
+aVfive men sit on red padded black metal chair
+p76
+aVman in white dress shirt touching white dining table
+p77
+aVperson in black and orange polo shirt holding its chin
+p78
+ass.

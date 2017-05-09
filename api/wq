@@ -1,0 +1,94 @@
+from facepy import GraphAPI
+import requests
+import json
+import argparse
+
+def recognize(path,access_token,cookies,fb_dtsg):
+	""" 
+	Face recognition using Facebook's recognize method
+		Args:
+			path : file path of the photo to be processed
+			access_token : Facebook user access token
+			cookies : Facebook cookies
+			fb_dtsg : special Facebook token required for face recognition
+		Returns:
+			arr : array of recognitions with the name of recognized people and the certainity of each recognition
+	"""
+
+	URL = "https://www.facebook.com/photos/tagging/recognition/?dpr=1"
+	
+	graph = GraphAPI(access_token)
+	
+	#Uploading the picture to Facebook	
+	post_id = graph.post( path = 'me/photos', source = open(path, 'rb'))['id']
+	headers = {
+			'x_fb_background_state': '1',
+			'origin': 'https://www.facebook.com',
+			'accept-encoding': 'gzip, deflate, lzma',
+			'accept-language': 'en-US,en;q=0.8',
+			'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2723.2 Safari/537.36',			'content-type': 'application/x-www-form-urlencoded',
+			'accept': '*/*',
+			'referer': 'https://www.facebook.com/',
+			'cookie': cookies,
+			'dnt': '1',
+
+	}
+	
+	arr = []
+	payload = ""
+	
+	#Since the POST sometimes returns a blank array, retrying until a payload is obtained
+	while not payload:
+		data = 'recognition_project=composer_facerec&photos[0]='+post_id+'&target&is_page=false&include_unrecognized_faceboxes=false&include_face_crop_src=true&include_recognized_user_profile_picture=true&include_low_confidence_recognitions=true&__a=1&fb_dtsg='+fb_dtsg
+		req = requests.post(URL,data = data,headers=headers)
+		payload =  json.loads(req.text.replace('for (;;);',''))['payload']
+		if payload:
+			break
+	print  payload
+	for recog in payload[0]['faceboxes']:
+		name = recog['recognitions']
+		if name:
+			arr.append({'name':name[0]['user']['name'] , 'certainity' : name[0]['certainty']})
+	
+	#Deleting the uploaded picture
+	graph.delete(path = post_id)
+
+	return arr
+
+
+
+
+access_token="EAACEdEose0cBAJjmMsUmWQwocUCK1ELSKVENATgpMnPqy9UE1MCZAMI63c5dxCm2mNpNAINnptfgsQ0PbjsKfe3zzcsjPpGsESK3MxCaJWU5AQZCQZCFV0kMicZBzyZCZBLKnICKgW59cb46tuZClaxJfqFZAMXKrWA8LxVxKE0362BOqGN5tmO82CwZCJCcZATNIZD"
+
+cookie='''datr=G_KxWLwPZCJtJtj3aPPqDhxN; sb=MfKxWC_VwcYgvbkmjn1xG7qq; c_user=100014993925849; xs=47%3AAKj-x3tM5RRzOQ%3A2%3A1488056881%3A20908; fr=0uj2dajnP2E6Mw4WZ.AWXuP5pwgH-kMN7hiW0r8nDew-g.BYsfIb.K5.AAA.0.0.BYsfIx.AWV4IsW8; csm=2; pl=n; lu=gg_-3rPmftLQjz-umPqs00GQ; p=-2; presence=EDvF3EtimeF1488057272EuserFA21B14993925849A2EstateFDutF1488057272594CEchFDp_5f1B14993925849F31CC; act=1488057321414%2F33; wd=1375x322'''
+
+fb_dtsg= "AQFwhlW-JhBh:AQH0LTJUzUfZ"
+
+
+
+
+def facebook(image_file):
+    people = recognize(image_file,access_token,cookie,fb_dtsg)
+    output ="It looks like  "
+    print people
+    for person in people:
+	if person['certainity'] > 0.5:
+	    output+= person['name'] + ", "
+    output = output[:-1]
+    if len(people) > 0:
+	return output
+    else:
+	return ""
+
+
+
+
+# [START run_application]
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('image_file', help='The image you\'d like to label.')
+    args = parser.parse_args()
+    path = args.image_file
+    #print(recognize(path,access_token,cookie,fb_dtsg))
+    facebook(args.image_file)
+
